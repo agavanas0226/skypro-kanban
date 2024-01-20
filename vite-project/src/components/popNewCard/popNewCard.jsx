@@ -1,4 +1,4 @@
-function popNewCard(){
+function PopNewCard(){
     return(
         <div className="pop-new-card" id="popNewCard">
 				<div className="pop-new-card__container">
@@ -112,4 +112,4 @@ function popNewCard(){
 			</div>
     )
 }
-export default popNewCard
+export default PopNewCard
