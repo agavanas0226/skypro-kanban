@@ -1,4 +1,4 @@
-function popBrowse(){
+function PopBrowse(){
     return(
         <div className="pop-browse" id="popBrowse">
 				<div className="pop-browse__container">
@@ -139,4 +139,4 @@ function popBrowse(){
 			</div>
     )
 }
-export default popBrowse
+export default PopBrowse
