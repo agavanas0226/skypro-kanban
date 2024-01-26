@@ -1,12 +1,9 @@
 function Wrapper({children}){
     return(
-        <div className="wrapper">
-		
-
-			
+        <Wrapper>
             {children}
 		
-    </div>
+        </Wrapper>
     )
 }
 export default Wrapper
