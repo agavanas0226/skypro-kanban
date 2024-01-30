@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Container, HeaderBlock, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Card/Card.styled";
+import { Container, HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Card/Card.styled";
 function Header(props){
 	const[isOpened, setIsOpened] = useState(false);
 	function togglePopUp(){
 		setIsOpened((prev) => !prev)
 	}
     return(
-		<Header>
+		<HeaderHat>
 			<Container>
 				<HeaderBlock>
 					<div className="header__logo _show _light">
@@ -33,7 +33,7 @@ function Header(props){
 					</nav>					
 				</HeaderBlock>
 			</Container>			
-		</Header>
+		</HeaderHat>
     )
 }
 export default Header

@@ -75,7 +75,7 @@ export const CardsColumn = styled.div`
   display: block;
   position: relative;
 `;
-export const Header = styled.div`
+export const HeaderHat = styled.div`
   width: 100%;
   margin: 0 auto;
   background-color: #FFFFFF;
