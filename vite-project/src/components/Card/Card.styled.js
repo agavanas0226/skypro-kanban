@@ -112,7 +112,7 @@ export const HeaderPopUserSetTheme = styled.div`
   justify-content: space-between;
   margin-bottom: 30px;
 `;
-export const Main = styled.main`
+export const MainHat = styled.main`
   width: 100%;
   background-color: #EAEEF6;
 `;
@@ -131,7 +131,7 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 30px;
 `;
-export const Wrapper = styled.div`
+export const WrapperHat = styled.div`
   max-width: 100%;
   width: 100vw;
   min-height: 100vh;

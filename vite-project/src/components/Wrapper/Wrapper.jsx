@@ -1,9 +1,11 @@
+import { WrapperHat } from "../Card/Card.styled"
+
 function Wrapper({children}){
     return(
-        <Wrapper>
+        <WrapperHat>
             {children}
 		
-        </Wrapper>
+        </WrapperHat>
     )
 }
 export default Wrapper

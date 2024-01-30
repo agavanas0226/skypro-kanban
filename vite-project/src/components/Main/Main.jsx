@@ -1,4 +1,4 @@
-import { Container, MainBlock, MainContent } from "../Card/Card.styled";
+import { Container, MainBlock, MainContent, MainHat } from "../Card/Card.styled";
 import Column from "../Column/Column";
 
 const statusList = [
@@ -11,7 +11,7 @@ const statusList = [
 
 function Main({cardList, isLoaded}){
     return(
-		<Main>
+		<MainHat>
 			<Container>
 				<MainBlock>
 					<MainContent>
@@ -28,7 +28,7 @@ function Main({cardList, isLoaded}){
 				</MainContent>
 				</MainBlock>
 			</Container>
-		</Main>
+		</MainHat>
     )
 }
 export default Main
