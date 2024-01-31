@@ -1,4 +1,4 @@
-import { Container, MainBlock, MainContent, MainHat } from "../Card/Card.styled";
+import {MainHat, Container, MainBlock, MainContent,  } from "../Card/Card.styled";
 import Column from "../Column/Column";
 
 const statusList = [

@@ -1,6 +1,6 @@
-import { CardContent, CardDate, CardGroup, CardItem, CardTheme, CardThemeText, CardWrapper } from "./Card.styled"
+import { CardContent, CardDate, CardGroup, CardItem, CardTheme, CardThemeText, CardWrapper,Cards } from "./Card.styled"
 
-function Card({theme, name, date, Cards}){
+function Card({theme, name, date, }){
 	let color;
 	switch(theme){
 		case   "Web Design":
@@ -51,7 +51,7 @@ function Card({theme, name, date, Cards}){
 										</CardContent>
 									</CardWrapper>
 								</CardItem>
-	</Cards>
+		</Cards>
        
     )
 }
