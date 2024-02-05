@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Container, HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Card/Card.styled";
+import {HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Header/Header.styled";
+import { Container } from "../Main/Main.styled";
+
 function Header(props){
 	const[isOpened, setIsOpened] = useState(false);
 	function togglePopUp(){

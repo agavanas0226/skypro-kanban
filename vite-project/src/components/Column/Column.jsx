@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import { CardsColumn, ColumnTitle, MainColumn } from "../Card/Card.styled";
+import { CardsColumn, ColumnTitle, MainColumn,  } from "../Column/Column.styled";
 function Column (props) {
    return (
     <MainColumn>
@@ -8,7 +8,9 @@ function Column (props) {
     </ColumnTitle>
     <CardsColumn>
     {props.cardList.map((card) => (
-        <Card name={card.title}
+        <Card 
+        id={card.id}
+        name={card.title}
         theme={card.theme}
         data={card.data}
         key={card.id}

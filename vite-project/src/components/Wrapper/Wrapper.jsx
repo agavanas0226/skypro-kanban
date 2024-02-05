@@ -1,4 +1,4 @@
-import { WrapperHat } from "../Card/Card.styled"
+import { WrapperHat } from "../Wrapper/Wrapper.styled"
 
 function Wrapper({children}){
     return(
