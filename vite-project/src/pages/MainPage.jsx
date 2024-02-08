@@ -7,16 +7,28 @@ import { useEffect, useState } from 'react';
 import { cardList } from '../date';
 import { Link, Outlet } from 'react-router-dom';
 import { appRoutes } from '../lib/appRoutes';
+import { getTasks } from '../API/api';
 
-export default function MainPage(){
+export default function MainPage({userData}){
+
   const [cards, setCards] = useState(cardList);
+  
   const [isLoaded, setIsLoaded] = useState(true);
+  
   useEffect(()=>{
-	setTimeout(() =>{
-		setIsLoaded(false);
-	}, 1000)
-  }, [] )
-	function addCard(){
+    getTasks({token: userData.token})
+    
+    .then((data) =>{
+      console.log(data)
+      setCards(data.tasks)
+    })
+
+    .then(() =>{
+      setIsLoaded(false);
+    })
+  }, )
+	
+  function addCard(){
 		setCards([
 			...cards,
 			{

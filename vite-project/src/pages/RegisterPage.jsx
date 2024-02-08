@@ -1,9 +1,44 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Wrapper from "../components/Wrapper/Wrapper"
 import { appRoutes } from "../lib/appRoutes"
-import { Container, FormGroup, Modal, ModalBlock, ModalForm, ModalInput, ModalTTL } from "../GlobalStyle"
+import { Button, Container, FormGroup, Modal, ModalBlock, ModalForm, ModalInput, ModalTTL, TextButton } from "../GlobalStyle"
+import { useState } from "react";
+import { register } from "../API/api";
 
-export default function RegisterPage(){
+export default function RegisterPage({setUserData}){
+
+    
+    let navigate = useNavigate();
+    const registerForm = {
+        name: '',
+        login: '',
+        password: '',
+    };
+
+    const [registerData, setRegisterData] = useState(registerForm);
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        await register (registerData).then((data) =>{
+            console.log(data);
+            console.log(data.user);
+            setUserData(data.user);
+        }) .then(()=> {
+            navigate(appRoutes.MAIN)
+        })
+        .catch((error) => {
+            console.warn(error)
+        })
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target; // Извлекаем имя поля и его значение
+      
+        setRegisterData({
+          ...registerData, // Копируем текущие данные из состояния
+          [name]: value, // Обновляем нужное поле
+        });
+      };
     return(
         <Wrapper>
         <Container>
@@ -13,10 +48,25 @@ export default function RegisterPage(){
 						<h2>Регистрация</h2>
 					</ModalTTL>
 					<ModalForm>
-						<ModalInput type="text" name="first-name" id="first-name" placeholder="Имя"/>
-						<ModalInput type="text" name="login" id="loginReg" placeholder="Эл. почта"/>
-						<ModalInput type="password" name="password" id="passwordFirst" placeholder="Пароль" />
-						<button className="modal__btn-signup-ent _hover01" id="SignUpEnter"><a href="../main.html">Зарегистрироваться</a> </button>
+						<ModalInput type="text"  id="first-name" placeholder="Имя"
+                        value={registerData.name}
+                        onChange={handleInputChange}
+                        name="name"       
+                        label="Name"
+                        />
+						<ModalInput type="text"  id="loginReg" placeholder="Эл. почта"
+                        value={registerData.login}
+                        onChange={handleInputChange}
+                        name="login"       
+                        label="Login"
+                        />
+						<ModalInput type="password" id="passwordFirst" placeholder="Пароль" 
+                        value={registerData.password}
+                        onChange={handleInputChange}
+                        name="password"       
+                        label="Password"
+                        />
+						<Button className="modal__btn-signup-ent _hover01" id="SignUpEnter" onClick={handleRegister}><TextButton href="../main.html">Зарегистрироваться</TextButton> </Button>
 						<FormGroup>
 							<p>Уже есть аккаунт?  <Link to={appRoutes.LOGIN}>Войдите здесь</Link></p>
 						</FormGroup>
