@@ -20,8 +20,8 @@ function App() {
 	<Routes>
 		<Route element={<PrivateRoute isAuth={userData} />}> 
 			<Route path={appRoutes.MAIN} element={<MainPage userData={userData}/>}> 
-				<Route path={`${appRoutes.CARD}/:cardId`} element={<CardPage/>} />
 			</Route>
+			<Route path={`${appRoutes.CARD}/:cardId`} element={<CardPage/>} />
 			<Route path={appRoutes.EXIT} element={<PopExitPage/>} />
 		</Route>
 			<Route path={appRoutes.LOGIN} element={<LoginPage setUserData={setUserData}/>} />

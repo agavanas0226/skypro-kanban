@@ -31,7 +31,7 @@ export async function getTasks({token}){
     const responce = await fetch(API_URL,{
         method: 'GET',
         headers: {
-            Auhtorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         }
     });
     const data = await responce.json();

@@ -10,12 +10,14 @@ import { appRoutes } from '../lib/appRoutes';
 import { getTasks } from '../API/api';
 
 export default function MainPage({userData}){
+  // setIsLoaded(true);
 
   const [cards, setCards] = useState(cardList);
   
   const [isLoaded, setIsLoaded] = useState(true);
   
   useEffect(()=>{
+
     getTasks({token: userData.token})
     
     .then((data) =>{
