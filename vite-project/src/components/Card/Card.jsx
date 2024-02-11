@@ -17,7 +17,7 @@ function Card({theme, name, date, id }){
 	}
     return(
 		<Cards>
-								<CardItem>
+								<CardItem >
 									<CardWrapper>
 										<CardGroup>
 										{console.log(theme)}

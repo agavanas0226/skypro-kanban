@@ -7,15 +7,16 @@ function Column (props) {
         <p>{props.name}</p>
     </ColumnTitle>
     <CardsColumn>
-    {props.cardList.map((card) => (
-        <Card 
+    {props.cardList.map(card => {
+        console.log(card.id)
+        return <Card 
+        key={card.id}
         id={card.id}
         name={card.title}
         theme={card.theme}
         data={card.data}
-        key={card.id}
         />
-    ))}   
+    })}   
     </CardsColumn>
     </MainColumn>
 )
