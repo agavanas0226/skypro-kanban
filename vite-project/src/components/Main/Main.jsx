@@ -18,11 +18,11 @@ function Main({cardList, isLoaded}){
 						{
 						isLoaded ? 'Loading' :
 						statusList.map(item => {
-							<Column 
+							return (<Column 
 							name={item}
 							key={item}
 							cardList={cardList.filter((card) => card.status === item)}
-							/>
+							/>)
 						})
 						}
 				</MainContent>

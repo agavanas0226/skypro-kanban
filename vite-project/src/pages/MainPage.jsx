@@ -4,7 +4,6 @@ import Wrapper from '../components/Wrapper/Wrapper';
 import PopExit from '../components/popExit/popExit';
 import PopNewCard from '../components/popNewCard/popNewCard';
 import { useEffect, useState } from 'react';
-import { cardList } from '../date';
 import { Link, Outlet } from 'react-router-dom';
 import { appRoutes } from '../lib/appRoutes';
 import { getTasks } from '../API/api';
@@ -12,7 +11,7 @@ import { getTasks } from '../API/api';
 export default function MainPage({userData}){
   // setIsLoaded(true);
 
-  const [cards, setCards] = useState(cardList);
+  const [cards, setCards] = useState([]);
   
   const [isLoaded, setIsLoaded] = useState(true);
   
@@ -28,7 +27,7 @@ export default function MainPage({userData}){
     .then(() =>{
       setIsLoaded(false);
     })
-  }, )
+  }, [])
 	
   function addCard(){
 		setCards([
@@ -51,9 +50,6 @@ export default function MainPage({userData}){
         <Outlet/>
         <Header addCard={addCard}/>
         <Main isLoaded={isLoaded} cardList = {cards} />
-        <Link to={appRoutes.LOGIN}>Войти</Link>
-        <br/>
-        <Link to={appRoutes.REGISTER}>Зарегистрироваться</Link>
       </Wrapper>
         </>
     )
