@@ -4,12 +4,13 @@ import Wrapper from '../components/Wrapper/Wrapper';
 import PopExit from '../components/popExit/popExit';
 import PopNewCard from '../components/popNewCard/popNewCard';
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { appRoutes } from '../lib/appRoutes';
+import {  Outlet } from 'react-router-dom';
 import { getTasks } from '../API/api';
 
 export default function MainPage({userData}){
   // setIsLoaded(true);
+  const [isOpened, setIsOpened] = useState(false);
+
 
   const [cards, setCards] = useState([]);
   
@@ -29,26 +30,20 @@ export default function MainPage({userData}){
     })
   }, [])
 	
-  function addCard(){
-		setCards([
-			...cards,
-			{
-				id: cards.length + 1,
-				theme: "Research",
-				title: "Новая задача",
-				date: "30.10.23",
-				status: "Без статуса",
-			
-			}]
-		)
+function handleOpenPopUp(){
+		setIsOpened(true)
+	}
+	function handleClosePopUp(event){
+		event.preventDefault();
+		setIsOpened(false)
 	}
     return(
         <>
         <Wrapper>
         <PopExit />
-        <PopNewCard />
+        {isOpened ?  <PopNewCard handleClosePopUp={handleClosePopUp}/> : null}
         <Outlet/>
-        <Header addCard={addCard}/>
+        <Header addCard={handleOpenPopUp}/>
         <Main isLoaded={isLoaded} cardList = {cards} />
       </Wrapper>
         </>
