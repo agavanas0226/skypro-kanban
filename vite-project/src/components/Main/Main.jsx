@@ -1,4 +1,4 @@
-import {MainHat, Container, MainBlock, MainContent,  } from "../Card/Card.styled";
+import {MainHat, Container, MainBlock, MainContent,  } from "../Main/Main.styled";
 import Column from "../Column/Column";
 
 const statusList = [
@@ -17,13 +17,13 @@ function Main({cardList, isLoaded}){
 					<MainContent>
 						{
 						isLoaded ? 'Loading' :
-						statusList.map((item) => (
-							<Column 
+						statusList.map(item => {
+							return (<Column 
 							name={item}
 							key={item}
 							cardList={cardList.filter((card) => card.status === item)}
-							/>
-						))
+							/>)
+						})
 						}
 				</MainContent>
 				</MainBlock>

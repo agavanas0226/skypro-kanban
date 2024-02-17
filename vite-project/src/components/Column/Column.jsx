@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import { CardsColumn, ColumnTitle, MainColumn } from "../Card/Card.styled";
+import { CardsColumn, ColumnTitle, MainColumn,  } from "../Column/Column.styled";
 function Column (props) {
    return (
     <MainColumn>
@@ -7,13 +7,15 @@ function Column (props) {
         <p>{props.name}</p>
     </ColumnTitle>
     <CardsColumn>
-    {props.cardList.map((card) => (
-        <Card name={card.title}
+    {props.cardList.map(card => {
+        return (<Card 
+        key={card._id}
+        id={card._id}
+        name={card.title}
         theme={card.theme}
         data={card.data}
-        key={card.id}
-        />
-    ))}   
+        />)
+    })}   
     </CardsColumn>
     </MainColumn>
 )
