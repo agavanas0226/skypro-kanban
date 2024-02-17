@@ -6,8 +6,11 @@ import PopNewCard from '../components/popNewCard/popNewCard';
 import { useEffect, useState } from 'react';
 import {  Outlet } from 'react-router-dom';
 import { getTasks } from '../API/api';
+import { useUser } from '../hooks/useUser';
 
-export default function MainPage({userData}){
+export default function MainPage(){
+  const {userData} = useUser();
+
   // setIsLoaded(true);
   const [isOpened, setIsOpened] = useState(false);
 
