@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
+import { TasksContext } from "../../contexts/tasks";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
 
-  const [selected, setSelected] = useState();
+  const {setTasksData} = useContext(TasksContext);
 
+
+  const [selected, setSelected] = useState();
+//сделать state под категории
   const [newTask, setNewTask] = useState({
     title: "",
     topic: "",
@@ -22,11 +26,16 @@ function PopNewCard({ handleClosePopUp }) {
   console.log(newCard);
 
   const handleButtonClick = () => {
-    postNewTask({ token: userData.token, ...newTask });
+    postNewTask({ token: userData.token, ...newTask }).then(response =>{
+      setTasksData(response.tasks);
+      handleClosePopUp();
+    })
+
   };
-//
+  //
   const handleInputChange = (e) => {
     const { name, value } = e.target; // Извлекаем имя поля и его значение
+    console.log(name, value)
     setNewTask({
       ...newTask, // Копируем текущие данные из состояния
       [name]: value, // Обновляем нужное поле
@@ -41,7 +50,7 @@ function PopNewCard({ handleClosePopUp }) {
       });
     }
   }, [selected]);
-
+//добавитьь статусы и навесить handleinpurchange//
   return (
     <div className="pop-new-card" id="popNewCard">
       <div className="pop-new-card__container">
@@ -51,7 +60,10 @@ function PopNewCard({ handleClosePopUp }) {
             <a
               href="#"
               className="pop-new-card__close"
-              onClick={handleClosePopUp}
+              onClick={(event) =>{
+                event.preventDefault();
+                handleClosePopUp();
+              }}
             >
               &#10006;
             </a>
