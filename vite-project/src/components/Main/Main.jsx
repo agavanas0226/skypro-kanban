@@ -1,5 +1,7 @@
 import {MainHat, Container, MainBlock, MainContent,  } from "../Main/Main.styled";
 import Column from "../Column/Column";
+import { useContext } from "react";
+import { TasksContext } from "../../contexts/tasks";
 
 const statusList = [
 	"Без статуса",
@@ -9,7 +11,8 @@ const statusList = [
 	"Готово",
 ];
 
-function Main({cardList, isLoaded}){
+function Main({ isLoaded}){
+	const {tasksData} = useContext(TasksContext);
     return(
 		<MainHat>
 			<Container>
@@ -21,7 +24,7 @@ function Main({cardList, isLoaded}){
 							return (<Column 
 							name={item}
 							key={item}
-							cardList={cardList.filter((card) => card.status === item)}
+							cardList={tasksData.filter((card) => card.status === item)}
 							/>)
 						})
 						}

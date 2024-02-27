@@ -1,15 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { appRoutes } from "../lib/appRoutes";
 import { Button, Container, FormGroup, Modal, ModalBlock, ModalForm, ModalInput, ModalTTL, TextButton } from "../GlobalStyle";
 import { login } from "../API/api";
 import { useState } from "react";
+import { useUser } from '../hooks/useUser';
 
 
 
-export default function LoginPage({setUserData}){
+export default function LoginPage(){
+    const {loginUser} = useUser();
 
-    let navigate = useNavigate();
     const loginForm = {
         login: '',
         password: '',
@@ -22,9 +23,7 @@ export default function LoginPage({setUserData}){
         await login (loginData).then((data) =>{
             console.log(data);
             console.log(data.user);
-            setUserData(data.user);
-        }) .then(()=> {
-            navigate(appRoutes.MAIN)
+            loginUser(data.user)
         })
         .catch((error) => {
             console.warn(error)

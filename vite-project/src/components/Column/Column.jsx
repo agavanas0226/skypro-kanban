@@ -8,12 +8,13 @@ function Column (props) {
     </ColumnTitle>
     <CardsColumn>
     {props.cardList.map(card => {
+        console.log(props.cardList)
         return (<Card 
         key={card._id}
         id={card._id}
         name={card.title}
-        theme={card.theme}
-        data={card.data}
+        theme={card.topic}
+        date={card.date}
         />)
     })}   
     </CardsColumn>
