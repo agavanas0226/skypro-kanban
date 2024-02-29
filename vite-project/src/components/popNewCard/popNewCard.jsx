@@ -26,7 +26,9 @@ function PopNewCard({ handleClosePopUp }) {
   console.log(newCard);
 
   const handleButtonClick = () => {
-    postNewTask({ token: userData.token, ...newTask }).then(response =>{
+    postNewTask({ token: userData.token, ...newTask }).catch((error) => {
+      console.warn(error)
+  }).then(response =>{
       setTasksData(response.tasks);
       handleClosePopUp();
     })

@@ -45,7 +45,13 @@ export async function postNewTask({
   topic,
   status,
   date,
-}) {
+})
+ {
+  if (!Response.ok) {
+
+    throw new Error("тут сообщение об ошибке")
+  
+  }
   const responce = await fetch(API_URL, {
     method: "POST",
     headers: {
@@ -59,6 +65,7 @@ export async function postNewTask({
       date,
     }),
   });
+
   const data = await responce.json();
   return data;
 }
