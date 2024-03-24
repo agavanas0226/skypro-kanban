@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { appRoutes } from "../lib/appRoutes";
 
 
 
@@ -11,15 +13,15 @@ export const TasksContext = createContext(null);
 
 export const TasksProvider = ({children}) => {
     const [tasksData, setTasksData] = useState([]);
-    // let navigate = useNavigate();
-    // const [selected] = useState();
+    let navigate = useNavigate();
+    const [selected] = useState();
 
-    // const tasksUser = (user) => {
-    //     console.log(user);
-    //     setTasksData(user);
-    //     localStorage.setItem('user', JSON.stringify(user));
-    //     navigate(appRoutes.MAIN);
-    // }
+    const tasksUser = (user) => {
+        console.log(user);
+        setTasksData(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        navigate(appRoutes.MAIN);
+    }
 
     // const handleInputChange = (e) => {
     //     const { name, value } = e.target; // Извлекаем имя поля и его значение
@@ -29,19 +31,19 @@ export const TasksProvider = ({children}) => {
     //     });
     //   };
     
-      // useEffect(() => {
-      //   if (selected) {
-      //     setTasksData({
-      //       ...tasksData,
-      //       date: selected,
-      //     });
-      //   }
-      // }, [selected]);
+      useEffect(() => {
+        if (selected) {
+          setTasksData({
+            ...tasksData,
+            date: selected,
+          });
+        }
+      }, [selected]);
  
 
 
     return(
-        <TasksContext.Provider value={{tasksData, setTasksData}} >
+        <TasksContext.Provider value={{tasksData, setTasksData, tasksUser}} >
             {children}
         </TasksContext.Provider>
     )
