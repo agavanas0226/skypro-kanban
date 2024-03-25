@@ -30,6 +30,9 @@ function PopNewCard({ handleClosePopUp }) {
       setTasksData(response.tasks);
       handleClosePopUp();
     })
+    .catch((error) => {
+      console.warn(error)
+  })
 
   };
   //
