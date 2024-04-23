@@ -2,6 +2,7 @@ import { useState } from "react";
 import {HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Header/Header.styled";
 import { Container } from "../Main/Main.styled";
 import { appRoutes } from "../../lib/appRoutes";
+import { Link } from "react-router-dom";
 
 
 
@@ -30,7 +31,7 @@ function Header(props){
 						<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
 						<HeaderPopUserSetTheme>
 						</HeaderPopUserSetTheme>
-						<button type="button" className="_hover03" ><a  onClick={appRoutes.EXIT} > Выйти </a></button>
+						<button type="button" className="_hover03" ><Link  to={appRoutes.EXIT} > Выйти </Link></button>
 						</HeaderPopUserSet>
 					}
 					</nav>					
