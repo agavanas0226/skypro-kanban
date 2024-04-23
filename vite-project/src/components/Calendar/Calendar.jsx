@@ -1,8 +1,8 @@
-import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import {format} from 'date-fns';
 import ru from 'date-fns/locale/ru';
-import { CalendarBlocked } from '../popNewCard/popNewCard.styled';
+import { CalendarBlocked, DayPickerCalendar } from '../popNewCard/popNewCard.styled';
+
  function Calendar({selected, setSelected}){
 
     let footer = <p>Please pick a day</p>;
@@ -12,7 +12,7 @@ import { CalendarBlocked } from '../popNewCard/popNewCard.styled';
 
     return (
         <CalendarBlocked>
-        <DayPicker locale={ru}
+        <DayPickerCalendar locale={ru}
         mode="single"
         selected={selected}
         onSelect={setSelected}
