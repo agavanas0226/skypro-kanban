@@ -15,7 +15,8 @@ function PopExit(){
 								<Link to={appRoutes.LOGIN}>	Да, выйти
 								</Link>
 								</button>
-								<button className="pop-exit__exit-no _hover03" id="exitNo"><Link to={appRoutes.MAIN}>Нет, остаться
+								<button className="pop-exit__exit-no _hover03" id="exitNo">
+								<Link to={appRoutes.MAIN}> Нет, остаться
 								</Link> 
 								</button>
 							</div>

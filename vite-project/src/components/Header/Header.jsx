@@ -1,6 +1,9 @@
 import { useState } from "react";
 import {HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Header/Header.styled";
 import { Container } from "../Main/Main.styled";
+import { appRoutes } from "../../lib/appRoutes";
+
+
 
 function Header(props){
 	const[isOpened, setIsOpened] = useState(false);
@@ -19,17 +22,15 @@ function Header(props){
 					</div>
 					<nav className="header__nav">
 						<button className="header__btn-main-new _hover01" id="btnMainNew" onClick={props.addCard}>Создать новую задачу</button>
-						<a href="#" className="header__user _hover02 " onClick={togglePopUp}>Ivan Ivanov</a>
+						<a href="#" className="header__user _hover02 " onClick={togglePopUp} name="name"label="Name"></a>
 						{isOpened && 
 						<HeaderPopUserSet>
 						<a href=""></a> 
 						<p className="pop-user-set__name">Ivan Ivanov</p>
 						<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
 						<HeaderPopUserSetTheme>
-							<p>Темная тема</p>
-							<input type="checkbox" className="checkbox" name="checkbox"/>
 						</HeaderPopUserSetTheme>
-						<button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
+						<button type="button" className="_hover03" ><a  onClick={appRoutes.EXIT} > Выйти </a></button>
 						</HeaderPopUserSet>
 					}
 					</nav>					

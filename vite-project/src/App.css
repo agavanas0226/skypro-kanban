@@ -402,6 +402,7 @@ body {
 
 .calendar {
   width: 182px;
+  height: 228px;
   margin-bottom: 20px;
 }
 .calendar__ttl {

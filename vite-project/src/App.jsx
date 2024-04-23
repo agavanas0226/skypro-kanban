@@ -20,9 +20,9 @@ function App() {
 	<Routes>
 		<Route element={<PrivateRoute />}> 
 			<Route path={appRoutes.MAIN} element={<MainPage />}> 
-			</Route>
 			<Route path={`${appRoutes.CARD}/:cardId`} element={<CardPage/>} />
 			<Route path={appRoutes.EXIT} element={<PopExitPage/>} />
+			</Route>
 		</Route>
 			<Route path={appRoutes.LOGIN} element={<LoginPage/>} />
 			<Route path={appRoutes.REGISTER} element={<RegisterPage/>} />

@@ -3,6 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
 import { TasksContext } from "../../contexts/tasks";
+import { CalendarBlock } from "./popNewCard.styled";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
@@ -105,9 +106,9 @@ function PopNewCard({ handleClosePopUp }) {
                   ></textarea>
                 </div>
               </form>
-              <div className="pop-new-card__calendar calendar">
-                <Calendar selected={selected} setSelected={setSelected} />
-              </div>
+              <CalendarBlock className="pop-new-card__calendar calendar">
+                <Calendar className="calendarBlocked" selected={selected} setSelected={setSelected} />
+              </CalendarBlock>
             </div>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
