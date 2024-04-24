@@ -16,10 +16,10 @@ export const TasksProvider = ({children}) => {
     let navigate = useNavigate();
     const [selected] = useState();
 
-    const tasksUser = (user) => {
-        console.log(user);
-        setTasksData(user);
-        localStorage.setItem('user', JSON.stringify(user));
+    const tasksUser = (userTasks) => {
+        console.log(userTasks);
+        setTasksData(userTasks);
+        localStorage.setItem('userTasks', JSON.stringify(userTasks));
         navigate(appRoutes.MAIN);
     }
 
