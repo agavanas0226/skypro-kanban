@@ -1,9 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../lib/appRoutes";
-
-
-
 export const TasksContext = createContext(null);
 // перенести логику из мейнпейдж получение задач севрвера, доделать по аналогии из юзера,все это в таскспровайдере. получать с помощью контекста. 
 
@@ -16,10 +13,10 @@ export const TasksProvider = ({children}) => {
     let navigate = useNavigate();
     const [selected] = useState();
 
-    const tasksUser = (userTasks) => {
-        console.log(userTasks);
-        setTasksData(userTasks);
-        localStorage.setItem('userTasks', JSON.stringify(userTasks));
+    const tasksUser = (user) => {
+        console.log(user);
+        setTasksData(user);
+        localStorage.setItem('user', JSON.stringify(user));
         navigate(appRoutes.MAIN);
     }
 

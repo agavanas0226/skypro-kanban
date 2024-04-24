@@ -21,8 +21,8 @@ export const UserProvider = ({children}) => {
         navigate(appRoutes.MAIN);
     }
 
-    const logoutUser =(userTasks) =>{
-        setUserData(userTasks);
+    const logoutUser =() =>{
+        setUserData(null);
         localStorage.removeItem('user')
         navigate(appRoutes.LOGIN)
     }

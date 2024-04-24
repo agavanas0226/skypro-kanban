@@ -4,13 +4,14 @@ import { useState } from "react";
 import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
 import { deleteTask, editTask } from "../../API/api";
+import { useTask } from "../../hooks/useTask";
 // import {useTask} from "../../hooks/useTask";
 
 
 function PopBrowse(id) {
   const [selected, setSelected] = useState();
   const { userData } = useUser();
-  const { userTasks, returnTask } = useUser();
+  const { userTasks, returnTask } = useTask();
   const taskData = userTasks.find((task) => task._id === id);
 
   const deleteCard = async () => {

@@ -3,7 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
 import { TasksContext } from "../../contexts/tasks";
-import { CalendarBlock } from "./popNewCard.styled";
+import { CalendarBlock, Label1, Label2, Label3, PopNewCardBlock } from "./popNewCard.styled";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
@@ -58,7 +58,7 @@ function PopNewCard({ handleClosePopUp }) {
   return (
     <div className="pop-new-card" id="popNewCard">
       <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
+        <PopNewCardBlock >
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
             <a
@@ -125,7 +125,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Web Design"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio1">Web Design</label>
+                    <Label1 htmlFor="radio1">Web Design</Label1>
 
                     {/* _green */}
                     <input
@@ -135,7 +135,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Research"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio2">Research</label>
+                    <Label2 htmlFor="radio2">Research</Label2>
 
                     {/* _purple */}
                     <input
@@ -145,7 +145,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Copywriting"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio3">Copywriting</label>
+                    <Label3 htmlFor="radio3">Copywriting</Label3>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ function PopNewCard({ handleClosePopUp }) {
               Создать задачу
             </button>
           </div>
-        </div>
+        </PopNewCardBlock>
       </div>
     </div>
   );
