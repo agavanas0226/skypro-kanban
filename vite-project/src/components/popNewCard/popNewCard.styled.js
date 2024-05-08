@@ -22,7 +22,7 @@ export const PopNewCardBlock = styled.div`
 display: block;
 margin: 0 auto;
 background-color: #FFFFFF;
-max-width: 630px;
+max-width: 700px;
 width: 100%;
 height: 596px;
 padding: 40px 30px 48px;
@@ -63,4 +63,22 @@ color: #9A48F1;
 font: Roboto;
 font-size: 14px;
 line-height: 14.21px;
+`
+export const FormNewInput = styled.input`
+width: 300px;
+`
+export const FormNewArea = styled.textarea`
+width: 300px;
+`
+export const FormNewBlockInput = styled.div`
+width: 300px;
+`
+export const FormNewBlockArea = styled.div`
+width: 300px;
+`
+export const PopNewCardForm = styled.form`
+width: 300px;
+`
+export const PopNewCardWrap = styled.div`
+width: 300px;
 `

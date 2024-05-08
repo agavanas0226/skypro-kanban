@@ -332,7 +332,7 @@ body {
 }
 .pop-new-card__wrap {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: space-between;
 }
 .pop-new-card__form {

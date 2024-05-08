@@ -3,7 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
 import { TasksContext } from "../../contexts/tasks";
-import { CalendarBlock, Label1, Label2, Label3, PopNewCardBlock } from "./popNewCard.styled";
+import { CalendarBlock, FormNewInput, Label1, Label2, Label3, PopNewCardBlock, FormNewArea, FormNewBlockInput, FormNewBlockArea, PopNewCardForm, PopNewCardWrap } from "./popNewCard.styled";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
@@ -71,17 +71,17 @@ function PopNewCard({ handleClosePopUp }) {
             >
               &#10006;
             </a>
-            <div className="pop-new-card__wrap">
-              <form
+            <PopNewCardWrap className="pop-new-card__wrap">
+              <PopNewCardForm
                 className="pop-new-card__form form-new"
                 id="formNewCard"
                 action="#"
               >
-                <div className="form-new__block">
+                <FormNewBlockInput className="form-new__block">
                   <label htmlFor="formTitle" className="subttl">
                     Название задачи
                   </label>
-                  <input
+                  <FormNewInput
                     className="form-new__input"
                     value={newTask.title}
                     onChange={handleInputChange}
@@ -91,25 +91,25 @@ function PopNewCard({ handleClosePopUp }) {
                     placeholder="Введите название задачи..."
                     autoFocus
                   />
-                </div>
-                <div className="form-new__block">
+                </FormNewBlockInput>
+                <FormNewBlockArea className="form-new__block">
                   <label htmlFor="textArea" className="subttl">
                     Описание задачи
                   </label>
-                  <textarea
+                  <FormNewArea
                     className="form-new__area"
                     value={newTask.description}
                     onChange={handleInputChange}
                     name="description"
                     id="textArea"
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </form>
+                  ></FormNewArea>
+                </FormNewBlockArea>
+              </PopNewCardForm>
               <CalendarBlock className="pop-new-card__calendar calendar">
                 <Calendar className="calendarBlocked" selected={selected} setSelected={setSelected} />
               </CalendarBlock>
-            </div>
+            </PopNewCardWrap>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__themes">

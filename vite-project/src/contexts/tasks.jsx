@@ -13,7 +13,7 @@ export const TasksProvider = ({children}) => {
     let navigate = useNavigate();
     const [selected] = useState();
 
-    const tasksUser = (user) => {
+    const userTasks = (user) => {
         console.log(user);
         setTasksData(user);
         localStorage.setItem('user', JSON.stringify(user));
@@ -40,7 +40,7 @@ export const TasksProvider = ({children}) => {
 
 
     return(
-        <TasksContext.Provider value={{tasksData, setTasksData, tasksUser}} >
+        <TasksContext.Provider value={{tasksData, setTasksData, userTasks}} >
             {children}
         </TasksContext.Provider>
     )
