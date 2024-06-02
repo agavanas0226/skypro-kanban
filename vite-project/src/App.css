@@ -630,7 +630,7 @@ body {
   flex-direction: column;
 }
 .form-browse__area {
-  max-width: 370px;
+  max-width: 300px;
   width: 100%;
   outline: none;
   padding: 14px;

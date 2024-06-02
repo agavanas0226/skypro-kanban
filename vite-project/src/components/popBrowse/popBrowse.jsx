@@ -5,14 +5,17 @@ import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
 import { deleteTask, editTask } from "../../API/api";
 import { useTask } from "../../hooks/useTask";
+import { ButtonExit, ButtonGroup, CalendarBlock, PopBrowseBlock, PopBrowseForm, PopBrowseStatus, PopBrowseWrap, StatusThemes } from "./popBrowse.styled";
+import { FormNewArea, FormNewBlockArea } from "../popNewCard/popNewCard.styled";
 // import {useTask} from "../../hooks/useTask";
 
 
-function PopBrowse(id) {
+function PopBrowse({id, handleClosePopUp}) {
   const [selected, setSelected] = useState();
+  const {cardId} = useParams();
   const { userData } = useUser();
-  const { userTasks, returnTask } = useTask();
-  const taskData = userTasks.find((task) => task._id === id);
+  const { tasksData, returnTask } = useTask();
+  const task = tasksData.find((task) => task._id === cardId);
 
   const deleteCard = async () => {
     try {
@@ -24,11 +27,11 @@ function PopBrowse(id) {
     }
   };
   const [editedTask, setEditedTask] = useState({
-    title: taskData.title,
-    topic: taskData.topic,
-    status: taskData.status,
-    description: taskData.description,
-    date: taskData.date,
+    title: task?.title,
+    topic: task?.topic,
+    status: task?.status,
+    description: task?.description,
+    date: task?.date,
   });
   const handleInputChange = (e) => {
     console.log("item editing");
@@ -58,11 +61,10 @@ function PopBrowse(id) {
       throw new Error(error.message);
     }
   };
-  let { cardId } = useParams();
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
-        <div className="pop-browse__block">
+        <PopBrowseBlock className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
               <h3 className="pop-browse__ttl">Название задачи:{cardId}</h3>
@@ -70,9 +72,9 @@ function PopBrowse(id) {
                 <p className="_orange">Web Design</p>
               </div>
             </div>
-            <div className="pop-browse__status status">
+            <PopBrowseStatus className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
-              <div className="status__themes">
+              <StatusThemes className="status__themes">
                 <div className="status__theme _hide">
                   <p>Без статуса</p>
                 </div>
@@ -88,15 +90,15 @@ function PopBrowse(id) {
                 <div className="status__theme _hide">
                   <p>Готово</p>
                 </div>
-              </div>
-            </div>
-            <div className="pop-browse__wrap">
-              <form
+              </StatusThemes>
+            </PopBrowseStatus>
+            <PopBrowseWrap className="pop-browse__wrap">
+              <PopBrowseForm
                 className="pop-browse__form form-browse"
                 id="formBrowseCard"
                 action="#"
               >
-                <div className="form-browse__block">
+                <FormNewBlockArea className="form-browse__block">
                   <label
                     htmlFor="textArea01"
                     className="subttl"
@@ -107,26 +109,26 @@ function PopBrowse(id) {
                   >
                     Описание задачи
                   </label>
-                  <textarea
+                  <FormNewArea
                     className="form-browse__area"
                     name="text"
                     id="textArea01"
                     readOnly
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </form>
-              <div className="pop-new-card__calendar calendar">
-                <Calendar selected={selected} setSelected={setSelected} />
-              </div>
-            </div>
+                  ></FormNewArea>
+                </FormNewBlockArea>
+              </PopBrowseForm>
+              <CalendarBlock className="pop-new-card__calendar calendar">
+                <Calendar className="calendarBlocked" selected={selected} setSelected={setSelected} />
+              </CalendarBlock>
+            </PopBrowseWrap>
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__theme _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
             </div>
-            <div className="pop-browse__btn-browse ">
+            <ButtonGroup className="pop-browse__btn-browse ">
               <div className="btn-group">
                 <button
                   className="btn-browse__edit _btn-bor _hover03"
@@ -141,13 +143,15 @@ function PopBrowse(id) {
                   Удалить задачу
                 </button>
               </div>
+              <ButtonExit>
               <button
                 className="btn-browse__close _btn-bg _hover01"
-                onClick={appRoutes.HOME}
+                onClick={appRoutes.MAIN}
               >
                 Закрыть
               </button>
-            </div>
+              </ButtonExit>
+            </ButtonGroup>
             <div className="pop-browse__btn-edit _hide">
               <div className="btn-group">
                 <button className="btn-edit__edit _btn-bg _hover01">
@@ -172,7 +176,7 @@ function PopBrowse(id) {
               </button>
             </div>
           </div>
-        </div>
+        </PopBrowseBlock>
       </div>
     </div>
   );
