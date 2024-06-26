@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Calendar from "../Calendar/Calendar";
 import { useState } from "react";
 import { appRoutes } from "../../lib/appRoutes";
@@ -10,7 +10,8 @@ import { FormNewArea, FormNewBlockArea } from "../popNewCard/popNewCard.styled";
 // import {useTask} from "../../hooks/useTask";
 
 
-function PopBrowse({id, handleClosePopUp}) {
+function PopBrowse({id}) {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState();
   const {cardId} = useParams();
   const { userData } = useUser();
@@ -146,7 +147,7 @@ function PopBrowse({id, handleClosePopUp}) {
               <ButtonExit>
               <button
                 className="btn-browse__close _btn-bg _hover01"
-                onClick={appRoutes.MAIN}
+                onClick={navigate(appRoutes.MAIN)}
               >
                 Закрыть
               </button>
