@@ -1,12 +1,14 @@
-import { useState } from "react";
+import {  useState } from "react";
 import {Button, HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme } from "../Header/Header.styled";
 import { Container } from "../Main/Main.styled";
 import { appRoutes } from "../../lib/appRoutes";
 import { Link } from "react-router-dom";
+// import { UserContext } from "../../contexts/user";
 
 
 
 function Header(props){
+	// const {nameUserHeader} = useContext (UserContext);
 	const[isOpened, setIsOpened] = useState(false);
 	function togglePopUp(){
 		setIsOpened((prev) => !prev)
@@ -23,7 +25,8 @@ function Header(props){
 					</div>
 					<nav className="header__nav">
 						<button className="header__btn-main-new _hover01" id="btnMainNew" onClick={props.addCard}>Создать новую задачу</button>
-						<a href="#" className="header__user _hover02 " onClick={togglePopUp} name="name"label="Name"></a>
+						{/* Куда-то сюда надо передать имя */}
+						<a href="#" className="header__user _hover02 " onClick={togglePopUp}  name="name"label="Name"> </a>
 						{isOpened && 
 						<HeaderPopUserSet>
 						<a href=""></a> 
