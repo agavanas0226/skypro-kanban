@@ -44,7 +44,9 @@ export const Button = styled.button`
   border-radius: 4px;
   padding: 10px, 14px, 10px, 14px;
   color: #565EEF;
-
+  background-color: transparent;
+  font-size: 14px;
+  & a {color: #565EEF;}
   `;
 // export const Link = styled.link`
 //   color: #565EEF;

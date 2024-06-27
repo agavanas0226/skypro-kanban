@@ -7,6 +7,8 @@ import { register } from "../API/api";
 import { useUser } from "../hooks/useUser";
 
 export default function RegisterPage(){
+    const [error, setError] = useState(null);
+
 
     const {loginUser} = useUser();
 
@@ -20,6 +22,8 @@ export default function RegisterPage(){
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        if (!registerData.name.trim() || !registerData.login.trim() || !registerData.password.trim()) return alert("Заполните поля")
+
         await register (registerData).then((data) =>{
             console.log(data);
             console.log(data.user);
@@ -27,6 +31,8 @@ export default function RegisterPage(){
         })
         .catch((error) => {
             console.warn(error)
+            setError(error.message)
+
         })
     };
 
@@ -65,6 +71,7 @@ export default function RegisterPage(){
                         name="password"       
                         label="Password"
                         />
+                        {error}
 						<Button className="modal__btn-signup-ent _hover01" id="SignUpEnter" onClick={handleRegister}><TextButton href="../main.html">Зарегистрироваться</TextButton> </Button>
 						<FormGroup>
 							<p>Уже есть аккаунт?  <Link to={appRoutes.LOGIN}>Войдите здесь</Link></p>

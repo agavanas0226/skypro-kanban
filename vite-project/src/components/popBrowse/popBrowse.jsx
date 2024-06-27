@@ -12,11 +12,11 @@ import { FormNewArea, FormNewBlockArea } from "../popNewCard/popNewCard.styled";
 
 function PopBrowse({id}) {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState();
   const {cardId} = useParams();
   const { userData } = useUser();
   const { tasksData, returnTask } = useTask();
   const task = tasksData.find((task) => task._id === cardId);
+  const [selected, setSelected] = useState(task.date);
 
   const deleteCard = async () => {
     try {
@@ -68,9 +68,9 @@ function PopBrowse({id}) {
         <PopBrowseBlock className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи:{cardId}</h3>
+              <h3 className="pop-browse__ttl">{editedTask.title}</h3>
               <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
+                <p className="_orange">{editedTask.topic}</p>
               </div>
             </div>
             <PopBrowseStatus className="pop-browse__status status">
@@ -111,6 +111,7 @@ function PopBrowse({id}) {
                     Описание задачи
                   </label>
                   <FormNewArea
+                  value={editedTask.description}
                     className="form-browse__area"
                     name="text"
                     id="textArea01"
@@ -126,7 +127,7 @@ function PopBrowse({id}) {
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__theme _orange _active-category">
-                <p className="_orange">Web Design</p>
+                <p className="_orange">{editedTask.topic}</p>
               </div>
             </div>
             <ButtonGroup className="pop-browse__btn-browse ">

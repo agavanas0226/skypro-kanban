@@ -27,7 +27,10 @@ function PopNewCard({ handleClosePopUp }) {
   console.log(newCard);
 
   const handleButtonClick = () => {
-    postNewTask({ token: userData.token, ...newTask }).then(response =>{
+    if (!newTask.title.trim() || !newTask.topic.trim() || !newTask.description.trim() || !newTask.status.trim()
+    || !selected) return alert("Заполните поля")
+      
+      postNewTask({ token: userData.token, ...newTask }).then(response =>{
       setTasksData(response.tasks);
       handleClosePopUp();
     })

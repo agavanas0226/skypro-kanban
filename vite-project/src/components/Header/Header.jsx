@@ -3,12 +3,13 @@ import {Button, HeaderBlock, HeaderHat, HeaderPopUserSet, HeaderPopUserSetTheme 
 import { Container } from "../Main/Main.styled";
 import { appRoutes } from "../../lib/appRoutes";
 import { Link } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 // import { UserContext } from "../../contexts/user";
 
 
 
 function Header(props){
-	// const {nameUserHeader} = useContext (UserContext);
+	const {userData} = useUser ();
 	const[isOpened, setIsOpened] = useState(false);
 	function togglePopUp(){
 		setIsOpened((prev) => !prev)
@@ -26,12 +27,12 @@ function Header(props){
 					<nav className="header__nav">
 						<button className="header__btn-main-new _hover01" id="btnMainNew" onClick={props.addCard}>Создать новую задачу</button>
 						{/* Куда-то сюда надо передать имя */}
-						<a href="#" className="header__user _hover02 " onClick={togglePopUp}  name="name"label="Name"> </a>
+						<a href="#" className="header__user _hover02 " onClick={togglePopUp}  name="name"label="Name">{userData.name} </a>
 						{isOpened && 
 						<HeaderPopUserSet>
 						<a href=""></a> 
-						<p className="pop-user-set__name">Ivan Ivanov</p>
-						<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+						<p className="pop-user-set__name">{userData.name}</p>
+						<p className="pop-user-set__mail">{userData.login}</p>
 						<HeaderPopUserSetTheme>
 						</HeaderPopUserSetTheme>
 						<Button type="button" className="_hover03" ><Link  to={appRoutes.EXIT} > Выйти </Link></Button>

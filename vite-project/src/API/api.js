@@ -4,28 +4,49 @@ const API_URL = "https://wedev-api.sky.pro/api/kanban";
 const API_URL_DELETE = "https://wedev-api.sky.pro/api/kanban/:id"
 
 export async function login({ login, password }) {
-  const responce = await fetch(API_URL_USER + "/login", {
-    method: "POST",
-    body: JSON.stringify({
-      login,
-      password,
-    }),
-  });
-  const data = await responce.json();
-  return data;
+  try {
+    const responce = await fetch(API_URL_USER + "/login", {
+      method: "POST",
+      body: JSON.stringify({
+        login,
+        password,
+      }),
+    });
+    if (!responce.ok){
+      const error = await responce.json()
+      throw new Error(error.error)
+    }
+    const data = await responce.json();
+    return data;
+    
+  } catch (error) {
+    throw new Error(error.message)
+  }
+  
 }
 
 export async function register({ name, login, password }) {
-  const responce = await fetch(API_URL_USER, {
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      login,
-      password,
-    }),
-  });
-  const data = await responce.json();
-  return data;
+  try {
+    const responce = await fetch(API_URL_USER, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        login,
+        password,
+      }),
+    });
+    if (!responce.ok){
+      const error = await responce.json()
+      throw new Error(error.error)
+    }
+
+    const data = await responce.json();
+    return data;
+    
+  }  catch (error) {
+    throw new Error(error.message)
+  }
+  
 }
 export async function deleteTask({_id,userId,title,topic,date,description,status }){
   const responce = await fetch(API_URL_DELETE, {
