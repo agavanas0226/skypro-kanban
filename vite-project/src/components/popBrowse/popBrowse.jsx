@@ -148,7 +148,7 @@ function PopBrowse({id}) {
               <ButtonExit>
               <button
                 className="btn-browse__close _btn-bg _hover01"
-                onClick={navigate(appRoutes.MAIN)}
+                onClick={() => navigate(appRoutes.MAIN)}
               >
                 Закрыть
               </button>
