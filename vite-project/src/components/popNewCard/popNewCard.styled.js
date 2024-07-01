@@ -33,11 +33,11 @@ position: relative;
 export const Label1 = styled.label`
 width: 115px;
 height: 30px;
-/* radius:24px; */
+border-radius:24px;
 padding:8px, 20px, 8px, 20px;
 background-color: #FFE4C2;
 color: #FF6D00;
-font: Roboto;
+font-style: Roboto;
 font-size: 14px;
 line-height: 14.21px;
 /* align-items: center */
@@ -45,25 +45,25 @@ line-height: 14.21px;
 export const Label2 = styled.label`
 width: 98px;
 height: 30px;
-/* radius:24px; */
+border-radius:24px;
 padding:8px, 20px, 8px, 20px;
 background-color: #B4FDD1;
 color: #06B16E;
-font: Roboto;
+font-style: Roboto;
 font-size: 14px;
 line-height: 14.21px;
 `
 export const Label3 = styled.label`
 width: 114px;
 height: 30px;
-/* radius:24px; */
+border-radius:24px;
 padding:8px, 20px, 8px, 20px;
 background-color: #E9D4FF;
 color: #9A48F1;
-font: Roboto;
+font-style: Roboto;
 font-size: 14px;
 line-height: 14.21px;
-`
+`;
 export const FormNewInput = styled.input`
 width: 300px;
 `
