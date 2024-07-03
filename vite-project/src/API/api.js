@@ -1,7 +1,7 @@
 const token = "asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
 const API_URL_USER = "https://wedev-api.sky.pro/api/user";
 const API_URL = "https://wedev-api.sky.pro/api/kanban";
-const API_URL_DELETE = "https://wedev-api.sky.pro/api/kanban/:id"
+// const API_URL_DELETE = "https://wedev-api.sky.pro/api/kanban/:id"
 
 export async function login({ login, password }) {
   try {
@@ -48,37 +48,33 @@ export async function register({ name, login, password }) {
   }
   
 }
-export async function deleteTask({_id,userId,title,topic,date,description,status }){
-  const responce = await fetch(API_URL_DELETE, {
+export async function deleteTask(token, id){
+  const responce = await fetch(API_URL + `/${id}`, {
     method: "DELETE",
-    body: JSON.stringify({
-        _id,
-        userId,
-        title,
-        topic,
-        date,
-        description,
-        status,
-    }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
   });
-  const data = await responce.json();
-  return data;
+  if (responce.status === 400) {
+    throw new Error ("Ошибка удаления");
+  } else {
+    const data = await responce.json();
+    return data;
+  }
 }
-export async function editTask({_id,userId,title,topic,date,description,status }){
-  const responce = await fetch(API_URL_DELETE, {
+export async function editTask({id, token }){
+  const responce = await fetch(API_URL + `/${id}`, {
     method: "PUT",
-    body: JSON.stringify({
-        _id,
-        userId,
-        title,
-        topic,
-        date,
-        description,
-        status,
-    }),
-  });
-  const data = await responce.json();
-  return data;
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+    });
+    if (responce.status === 400) {
+      throw new Error ("Ошибка редактирования");
+    } else {
+      const data = await responce.json();
+      return data;
+    }
 }
 export async function getTasks({ token }) {
   const responce = await fetch(API_URL, {

@@ -3,7 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
 import { TasksContext } from "../../contexts/tasks";
-import { CalendarBlock, FormNewInput, Label1, Label2, Label3, PopNewCardBlock, FormNewArea, FormNewBlockInput, FormNewBlockArea, PopNewCardForm, PopNewCardWrap } from "./popNewCard.styled";
+import { CalendarBlock, FormNewInput, Label1, Label2, Label3, PopNewCardBlock, FormNewArea, FormNewBlockInput, FormNewBlockArea, PopNewCardForm, PopNewCardWrap, Input2, Input1, Input3 } from "./popNewCard.styled";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
@@ -121,17 +121,17 @@ function PopNewCard({ handleClosePopUp }) {
                     {/*пропустить через метод map  */}
                     {/* array for theme(s) */}
                     {/* _orange */}
-                    <input
+                    <Input1
                       type="radio"
                       id="radio1"
                       name="topic"
                       value={"Web Design"}
                       onChange={handleInputChange}
                     />
-                    <Label1 htmlFor="radio1">Web Design</Label1>
+                    <Label1  htmlFor="radio1">Web Design</Label1>
 
                     {/* _green */}
-                    <input
+                    <Input2
                       type="radio"
                       id="radio2"
                       name="topic"
@@ -141,7 +141,7 @@ function PopNewCard({ handleClosePopUp }) {
                     <Label2 htmlFor="radio2">Research</Label2>
 
                     {/* _purple */}
-                    <input
+                    <Input3
                       type="radio"
                       id="radio3"
                       name="topic"

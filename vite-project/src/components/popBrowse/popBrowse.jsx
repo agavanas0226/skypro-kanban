@@ -3,7 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useState } from "react";
 import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
-import { deleteTask, editTask } from "../../API/api";
+import { editTask } from "../../API/api";
 import { useTask } from "../../hooks/useTask";
 import { ButtonExit, ButtonGroup, CalendarBlock, PopBrowseBlock, PopBrowseForm, PopBrowseStatus, PopBrowseWrap, StatusThemes } from "./popBrowse.styled";
 import { FormNewArea, FormNewBlockArea } from "../popNewCard/popNewCard.styled";
@@ -17,16 +17,8 @@ function PopBrowse({id}) {
   const { tasksData, returnTask } = useTask();
   const task = tasksData.find((task) => task._id === cardId);
   const [selected, setSelected] = useState(task.date);
+  const [isEdit, setIsEdit] = useState(false);
 
-  const deleteCard = async () => {
-    try {
-      console.log("deleting card");
-      await deleteTask({ token: userData.token, id });
-    } catch (error) {
-      alert(error.message);
-      throw new Error(error.message);
-    }
-  };
   const [editedTask, setEditedTask] = useState({
     title: task?.title,
     topic: task?.topic,
@@ -42,25 +34,42 @@ function PopBrowse({id}) {
       [name]: value,
     });
   };
-  const editCard = async () => {
-    try {
-      console.log("sending edits to card");
+  const editCard = async (e) => {
+    e.preventDefault();
 
-      await editTask({
-        token: userData.token,
-        id,
-        title: editedTask.title,
-        topic: editedTask.topic,
-        status: editedTask.status,
-        description: editedTask.description,
-        date: selected,
-      }).then((data) => {
-        returnTask({ data });
-      });
-    } catch (error) {
-      alert(error.message);
-      throw new Error(error.message);
-    }
+    const taskData = {
+      ...editedTask,
+      date: selected,
+      token: userData.token,
+    };
+    console.log(editedTask);
+
+    await editTask({
+      id,
+      token: userData.token,
+    })
+    .then((data) => {
+      returnTask(data.userData);
+      navigate(appRoutes.HOME);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  };
+  const deleteCard = async (e) => {
+    e.preventDefault();
+
+    await deleteCard({
+      id,
+      token: userData.token,
+    })
+    .then((data) => {
+      returnTask(data.userData);
+      navigate(appRoutes.HOME);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
   };
   return (
     <div className="pop-browse" id="popBrowse">
@@ -75,23 +84,26 @@ function PopBrowse({id}) {
             </div>
             <PopBrowseStatus className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
+              {isEdit && (
               <StatusThemes className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
-              </StatusThemes>
+              <div className="status__theme ">
+                <p>Без статуса</p>
+              </div>
+              <div className="status__theme _gray">
+                <p className="_gray">Нужно сделать</p>
+              </div>
+              <div className="status__theme ">
+                <p>В работе</p>
+              </div>
+              <div className="status__theme ">
+                <p>Тестирование</p>
+              </div>
+              <div className="status__theme">
+                <p>Готово</p>
+              </div>
+            </StatusThemes>
+
+              )}
             </PopBrowseStatus>
             <PopBrowseWrap className="pop-browse__wrap">
               <PopBrowseForm
@@ -134,7 +146,7 @@ function PopBrowse({id}) {
               <div className="btn-group">
                 <button
                   className="btn-browse__edit _btn-bor _hover03"
-                  onClick={editCard}
+                  onClick={() => setIsEdit(true)}
                 >
                   Редактировать задачу
                 </button>

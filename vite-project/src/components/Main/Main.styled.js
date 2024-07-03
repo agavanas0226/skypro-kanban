@@ -12,6 +12,11 @@ export const MainBlock = styled.div`
 export const MainContent = styled.div`
   width: 100%;
   display: flex;
+  & p{
+    color: #94A6BE;
+    font-size: 14px;
+    line-height: 16px;
+  }
 `;
 export const Container = styled.div`
   max-width: 1260px;

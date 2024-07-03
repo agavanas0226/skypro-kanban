@@ -17,6 +17,7 @@ export const CalendarBlock = styled.div`
 `
 export const StatusThemes = styled.div`
     width: 200px;
+
 `;
 export const PopBrowseStatus = styled.div`
     width: 245px;
@@ -38,4 +39,11 @@ export const ButtonGroup = styled.div`
 `;
 export const ButtonExit = styled.div`
     padding-top: 65px;
+`
+export const Status = styled.p`
+/* font-family: Roboto;
+font-size: 14px;
+font-weight: 600;
+line-height: 16.41px; */
+color: #94A6BE;
 `
