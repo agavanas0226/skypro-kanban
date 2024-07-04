@@ -128,7 +128,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Web Design"}
                       onChange={handleInputChange}
                     />
-                    <Label1  htmlFor="radio1">Web Design</Label1>
+                    <Label1  for="radio1">Web Design</Label1>
 
                     {/* _green */}
                     <Input2
@@ -138,7 +138,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Research"}
                       onChange={handleInputChange}
                     />
-                    <Label2 htmlFor="radio2">Research</Label2>
+                    <Label2 for="radio2">Research</Label2>
 
                     {/* _purple */}
                     <Input3
@@ -148,7 +148,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Copywriting"}
                       onChange={handleInputChange}
                     />
-                    <Label3 htmlFor="radio3">Copywriting</Label3>
+                    <Label3 for="radio3">Copywriting</Label3>
                   </div>
                 </div>
               </div>

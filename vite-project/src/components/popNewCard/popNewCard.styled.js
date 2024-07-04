@@ -83,11 +83,11 @@ export const PopNewCardWrap = styled.div`
 width: 300px;
 `
 export const Input1 = styled.input`
-    /* display: none; */
+    display: none;
 `
 export const Input2 = styled.input`
-    /* display: none; */
+    display: none;
 `
 export const Input3 = styled.input`
-    /* display: none; */
+    display: none;
 `
