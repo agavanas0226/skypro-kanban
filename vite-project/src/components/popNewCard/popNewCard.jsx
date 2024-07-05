@@ -121,6 +121,7 @@ function PopNewCard({ handleClosePopUp }) {
                     {/*пропустить через метод map  */}
                     {/* array for theme(s) */}
                     {/* _orange */}
+                    <Label1 >
                     <Input1
                       type="radio"
                       id="radio1"
@@ -128,9 +129,10 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Web Design"}
                       onChange={handleInputChange}
                     />
-                    <Label1  for="radio1">Web Design</Label1>
+                    Web Design</Label1>
 
                     {/* _green */}
+                    <Label2 >
                     <Input2
                       type="radio"
                       id="radio2"
@@ -138,9 +140,10 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Research"}
                       onChange={handleInputChange}
                     />
-                    <Label2 for="radio2">Research</Label2>
+                    Research</Label2>
 
                     {/* _purple */}
+                    <Label3 >
                     <Input3
                       type="radio"
                       id="radio3"
@@ -148,7 +151,7 @@ function PopNewCard({ handleClosePopUp }) {
                       value={"Copywriting"}
                       onChange={handleInputChange}
                     />
-                    <Label3 for="radio3">Copywriting</Label3>
+                    Copywriting</Label3>
                   </div>
                 </div>
               </div>

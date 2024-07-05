@@ -3,7 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useState } from "react";
 import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
-import { editTask } from "../../API/api";
+import { deleteTask, editTask } from "../../API/api";
 import { useTask } from "../../hooks/useTask";
 import { ButtonExit, ButtonGroup, CalendarBlock, PopBrowseBlock, PopBrowseForm, PopBrowseStatus, PopBrowseWrap, StatusThemes } from "./popBrowse.styled";
 import { FormNewArea, FormNewBlockArea } from "../popNewCard/popNewCard.styled";
@@ -59,7 +59,7 @@ function PopBrowse({id}) {
   const deleteCard = async (e) => {
     e.preventDefault();
 
-    await deleteCard({
+    await deleteTask({
       id,
       token: userData.token,
     })
