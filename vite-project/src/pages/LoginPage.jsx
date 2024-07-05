@@ -17,9 +17,11 @@ export default function LoginPage(){
     };
 
     const [loginData, setLoginData] = useState(loginForm);
+    const [error, setError] = useState(null);
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        if (!loginData.login.trim() || !loginData.password.trim()) return alert("Заполните поля")
         await login (loginData).then((data) =>{
             console.log(data);
             console.log(data.user);
@@ -27,6 +29,7 @@ export default function LoginPage(){
         })
         .catch((error) => {
             console.warn(error)
+            setError(error.message)
         })
     };
 
@@ -59,6 +62,7 @@ export default function LoginPage(){
                         name="password"       
                         label="Password"
                         />
+                        {error}
 						<Button className="modal__btn-enter _hover01" id="btnEnter" onClick={handleLogin}><TextButton href="../main.html">Войти</TextButton></Button>
 						<FormGroup>
 							<p>Нужно зарегистрироваться?</p>

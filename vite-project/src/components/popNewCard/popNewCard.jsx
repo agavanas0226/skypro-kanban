@@ -3,6 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
 import { postNewTask } from "../../API/api";
 import { TasksContext } from "../../contexts/tasks";
+import { CalendarBlock, FormNewInput, Label1, Label2, Label3, PopNewCardBlock, FormNewArea, FormNewBlockInput, FormNewBlockArea, PopNewCardForm, PopNewCardWrap, Input2, Input1, Input3 } from "./popNewCard.styled";
 
 function PopNewCard({ handleClosePopUp }) {
   const { userData } = useUser();
@@ -26,10 +27,16 @@ function PopNewCard({ handleClosePopUp }) {
   console.log(newCard);
 
   const handleButtonClick = () => {
-    postNewTask({ token: userData.token, ...newTask }).then(response =>{
+    if (!newTask.title.trim() || !newTask.topic.trim() || !newTask.description.trim() || !newTask.status.trim()
+    || !selected) return alert("Заполните поля")
+      
+      postNewTask({ token: userData.token, ...newTask }).then(response =>{
       setTasksData(response.tasks);
       handleClosePopUp();
     })
+    .catch((error) => {
+      console.warn(error)
+  })
 
   };
   //
@@ -54,7 +61,7 @@ function PopNewCard({ handleClosePopUp }) {
   return (
     <div className="pop-new-card" id="popNewCard">
       <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
+        <PopNewCardBlock >
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
             <a
@@ -67,17 +74,17 @@ function PopNewCard({ handleClosePopUp }) {
             >
               &#10006;
             </a>
-            <div className="pop-new-card__wrap">
-              <form
+            <PopNewCardWrap className="pop-new-card__wrap">
+              <PopNewCardForm
                 className="pop-new-card__form form-new"
                 id="formNewCard"
                 action="#"
               >
-                <div className="form-new__block">
+                <FormNewBlockInput className="form-new__block">
                   <label htmlFor="formTitle" className="subttl">
                     Название задачи
                   </label>
-                  <input
+                  <FormNewInput
                     className="form-new__input"
                     value={newTask.title}
                     onChange={handleInputChange}
@@ -87,25 +94,25 @@ function PopNewCard({ handleClosePopUp }) {
                     placeholder="Введите название задачи..."
                     autoFocus
                   />
-                </div>
-                <div className="form-new__block">
+                </FormNewBlockInput>
+                <FormNewBlockArea className="form-new__block">
                   <label htmlFor="textArea" className="subttl">
                     Описание задачи
                   </label>
-                  <textarea
+                  <FormNewArea
                     className="form-new__area"
                     value={newTask.description}
                     onChange={handleInputChange}
                     name="description"
                     id="textArea"
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </form>
-              <div className="pop-new-card__calendar calendar">
-                <Calendar selected={selected} setSelected={setSelected} />
-              </div>
-            </div>
+                  ></FormNewArea>
+                </FormNewBlockArea>
+              </PopNewCardForm>
+              <CalendarBlock className="pop-new-card__calendar calendar">
+                <Calendar className="calendarBlocked" selected={selected} setSelected={setSelected} />
+              </CalendarBlock>
+            </PopNewCardWrap>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__themes">
@@ -114,34 +121,37 @@ function PopNewCard({ handleClosePopUp }) {
                     {/*пропустить через метод map  */}
                     {/* array for theme(s) */}
                     {/* _orange */}
-                    <input
+                    <Label1 >
+                    <Input1
                       type="radio"
                       id="radio1"
                       name="topic"
                       value={"Web Design"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio1">Web Design</label>
+                    Web Design</Label1>
 
                     {/* _green */}
-                    <input
+                    <Label2 >
+                    <Input2
                       type="radio"
                       id="radio2"
                       name="topic"
                       value={"Research"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio2">Research</label>
+                    Research</Label2>
 
                     {/* _purple */}
-                    <input
+                    <Label3 >
+                    <Input3
                       type="radio"
                       id="radio3"
                       name="topic"
                       value={"Copywriting"}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="radio3">Copywriting</label>
+                    Copywriting</Label3>
                   </div>
                 </div>
               </div>
@@ -154,7 +164,7 @@ function PopNewCard({ handleClosePopUp }) {
               Создать задачу
             </button>
           </div>
-        </div>
+        </PopNewCardBlock>
       </div>
     </div>
   );

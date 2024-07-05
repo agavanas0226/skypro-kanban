@@ -37,3 +37,17 @@ export const HeaderPopUserSetTheme = styled.div`
   justify-content: space-between;
   margin-bottom: 30px;
 `;
+export const Button = styled.button`
+  border: 1px solid #565EEF;
+  width:  72px;
+  height: 30px;
+  border-radius: 4px;
+  padding: 10px, 14px, 10px, 14px;
+  color: #565EEF;
+  background-color: transparent;
+  font-size: 14px;
+  & a {color: #565EEF;}
+  `;
+// export const Link = styled.link`
+//   color: #565EEF;
+// `

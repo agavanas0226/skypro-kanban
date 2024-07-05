@@ -1,7 +1,7 @@
 import Main from "../components/Main/Main";
 import Header from "../components/Header/Header";
 import Wrapper from "../components/Wrapper/Wrapper";
-import PopExit from "../components/popExit/popExit";
+// import PopExit from "../components/popExit/popExit";
 import PopNewCard from "../components/popNewCard/popNewCard";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -41,7 +41,7 @@ export default function MainPage() {
   return (
     <>
       <Wrapper>
-        <PopExit />
+        {/* <PopExit /> */}
         {isOpened ? <PopNewCard handleClosePopUp={handleClosePopUp} /> : null}
         <Outlet />
         <Header addCard={handleOpenPopUp} />

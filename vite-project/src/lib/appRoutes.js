@@ -5,4 +5,5 @@ export const appRoutes = {
     CARD: "/card",
     REGISTER: "/register",
     LOGIN: "/login",
+    NEW_CARD: "/new_card",
 };

@@ -9,6 +9,7 @@ import  RegisterPage  from './pages/RegisterPage';
 import  NotFoundPage  from './pages/NotFoundPage';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import NewCardPage from './pages/NewCardPage';
 // import { useState } from 'react';
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
 	<Routes>
 		<Route element={<PrivateRoute />}> 
 			<Route path={appRoutes.MAIN} element={<MainPage />}> 
-			</Route>
 			<Route path={`${appRoutes.CARD}/:cardId`} element={<CardPage/>} />
+			<Route path={appRoutes.NEW_CARD} element={<NewCardPage/>} />
 			<Route path={appRoutes.EXIT} element={<PopExitPage/>} />
+			</Route>
 		</Route>
 			<Route path={appRoutes.LOGIN} element={<LoginPage/>} />
 			<Route path={appRoutes.REGISTER} element={<RegisterPage/>} />
